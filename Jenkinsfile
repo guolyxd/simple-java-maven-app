@@ -3,7 +3,7 @@ pipeline {
 	{
 	  docker {
 	      image 'maven:latest'
-	      args 'docker run -it --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:latest mvn clean install'
+	      args '-v /root/.m2:/root/.m2'
 	  }
 	}
 	stages {
@@ -11,14 +11,6 @@ pipeline {
 	     steps{
 	       sh 'mvn -B -DskipTests clean package'
 	     }
-
-	  stage('Test'){
-
-	  }
-
-	  stage('Deploy'){
-	  	
-	  }
 	  }
 	}
 }
