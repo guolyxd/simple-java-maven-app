@@ -3,7 +3,7 @@ pipeline {
 	{
 	  docker {
 	      image 'maven:latest'
-	      sh 'echo "complete download images"'
+	      args '-v /root/.m2:/root/.m2'
 	  }
 	}
 	stages {
